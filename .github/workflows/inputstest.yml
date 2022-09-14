@@ -1,0 +1,35 @@
+name: Python package
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true 
+        type: boolean 
+      tags:
+        description: 'Test scenario tags'
+        required: true 
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true 
+
+jobs:
+  build2:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
